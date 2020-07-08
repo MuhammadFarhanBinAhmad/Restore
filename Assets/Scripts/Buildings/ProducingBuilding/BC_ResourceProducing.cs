@@ -7,6 +7,14 @@ using TMPro;
 public class BC_ResourceProducing : BC_BasicBuildingStats
 {
     public int amount_Produce;
+
+    public int work_Needed;
+    internal int work_Done;
+
+    private new void Start()
+    {
+        work_Done = work_Needed;
+    }
     //change level of building
     public void ProduceItem(int c_level)
     {

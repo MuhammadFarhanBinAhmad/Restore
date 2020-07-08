@@ -17,12 +17,17 @@ public class BuildingManager : MonoBehaviour
     void Start()
     {
         the_CM = FindObjectOfType<ColonyManager>();
+
     }
     public void NewBuilding(int NewBuilding)
     {
         GameObject NB = Instantiate(building_Prefab[NewBuilding], transform.position, transform.parent.rotation);
         Destroy(transform.parent.gameObject);
-        //NB.transform.parent = this.GetComponentInParent<Transform>().transform;
+        //For Lab building
+        if (GetComponentInChildren<Lab>() != null)
+        {
+            the_CM.total_Lab--;
+        }
     }
     //create new building
     public void Reconstruct(int NewBuilding)//input number

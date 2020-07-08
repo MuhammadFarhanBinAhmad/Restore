@@ -6,22 +6,42 @@ public class ColonyManager : MonoBehaviour
 {
     //General Stats
     [Header("Basic Stats")]
-    public int total_Food;
-    public int total_Water;
-    public int total_Material;
-    public int total_Moral;
-    public int total_Defense;
+    public int 
+        total_Food, 
+        total_Water, 
+        total_Material, 
+        total_Moral,
+        total_Defense;
     [Header("Storage Limit")]
-    public int limit_Food;
-    public int limit_Water;
-    public int limit_Material;
-    public int limit_Moral = 100;
+    public int 
+        limit_Food, 
+        limit_Water, 
+        limit_Material, 
+        limit_Moral = 100;
     [Header("Buildings")]
     public List<Farm> farm_List;
     public List<Reservoir> reservoir_List;
     public List<WorkShop> workshop_List;
     public List<BuildingManager> building_Reconstructing_List;
-    public List<BC_BasicBuildingStats> level_Up_Building_List;
+    public List<BC_BasicBuildingStats> building_Level_Up_List;
+    public int total_Lab;
+    [Header("Lab Research")]
+    public int lab_Researching;
+    public bool lab_Currently_Researching;
+    public int lab_Research_Days_Left;
+    Lab the_L;
+    [Header("Total Population")]
+    public int 
+        total_Population, 
+        total_scientist, 
+        total_Soldier, 
+        total_Leader, 
+        total_Builder;
+
+    private void Start()
+    {
+        the_L = FindObjectOfType<Lab>();
+    }
 
     public void EndDay()
     {
@@ -60,19 +80,44 @@ public class ColonyManager : MonoBehaviour
             }
         }
         //Level Up Building
-        if (level_Up_Building_List.Count > 0)
+        if (building_Level_Up_List.Count > 0)
         {
-            for (int i = 0; i < level_Up_Building_List.Count; i++)
+            for (int i = 0; i < building_Level_Up_List.Count; i++)
             {
-                level_Up_Building_List[i].LevelUpBuilding();
+                building_Level_Up_List[i].LevelUpBuilding();
+            }
+        }
+        //lab currently researching
+        {
+            if (lab_Research_Days_Left >0)
+            {
+                lab_Research_Days_Left--;
+                print("hit3");
+            }
+            else
+            {
+                //unlocking research
+                the_L.unlockable_Abilities[lab_Researching].ability_Unlocked = true;
+                lab_Currently_Researching = false;
+                print("hit4");
             }
         }
         ClearList();
+    }
+    internal void SettingUpResearch(int ability_To_Unlock)
+    {
+        if (!lab_Currently_Researching)
+        {
+            lab_Researching = ability_To_Unlock;//set up what to research
+            lab_Currently_Researching = true;
+            lab_Research_Days_Left = the_L.unlockable_Abilities[ability_To_Unlock].days_Needed;
+            print("hit2");
+        }
     }
     //Clear all building in list at end of the day
     void ClearList()
     {
         building_Reconstructing_List.Clear();
-        level_Up_Building_List.Clear();
+        building_Level_Up_List.Clear();
     }
 }
