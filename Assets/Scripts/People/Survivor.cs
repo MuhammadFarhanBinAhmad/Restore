@@ -10,6 +10,7 @@ public class Survivor : MonoBehaviour
     [Header("PlayerStats")]
     public string name_First;
     public string name_Second;
+    public bool job_Assigned;
     public string survivor_Current_Occupation;
     public int 
         Health_Limit, 

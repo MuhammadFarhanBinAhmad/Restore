@@ -24,6 +24,7 @@ public class ColonyManager : MonoBehaviour
     public List<WorkShop> workshop_List;
     public List<BuildingManager> building_Reconstructing_List;
     public List<BC_BasicBuildingStats> building_Level_Up_List;
+    public List<School> building_Retraining_List;
     public int total_Lab;
     [Header("Lab Research")]
     public int lab_Researching;
@@ -42,7 +43,7 @@ public class ColonyManager : MonoBehaviour
     {
         the_L = FindObjectOfType<Lab>();
     }
-
+    //Note:Please clean this shit up pls
     public void EndDay()
     {
         //All produce for the day
@@ -92,16 +93,21 @@ public class ColonyManager : MonoBehaviour
             if (lab_Research_Days_Left >0)
             {
                 lab_Research_Days_Left--;
-                print("hit3");
             }
             else
             {
                 //unlocking research
                 the_L.unlockable_Abilities[lab_Researching].ability_Unlocked = true;
                 lab_Currently_Researching = false;
-                print("hit4");
             }
         }
+        /*if (building_Retraining_List.Count > 0)
+        {
+            for (int i = 0; i <= building_Retraining_List.Count-1; i++)
+            {
+                building_Retraining_List[i].RetrainingSurvivor()
+            }
+        }*/
         ClearList();
     }
     internal void SettingUpResearch(int ability_To_Unlock)
@@ -111,7 +117,6 @@ public class ColonyManager : MonoBehaviour
             lab_Researching = ability_To_Unlock;//set up what to research
             lab_Currently_Researching = true;
             lab_Research_Days_Left = the_L.unlockable_Abilities[ability_To_Unlock].days_Needed;
-            print("hit2");
         }
     }
     //Clear all building in list at end of the day

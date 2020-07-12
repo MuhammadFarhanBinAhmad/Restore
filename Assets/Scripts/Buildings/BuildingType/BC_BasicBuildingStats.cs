@@ -27,7 +27,7 @@ public class BC_BasicBuildingStats : MonoBehaviour
         the_BB = GetComponentInParent<BuildingManager>();
         for (int i = 0; i <= the_BB.building_Prefab.Count - 1; i++)
         {
-            button_Building_Name[i].text = the_BB.building_Prefab[i].name.ToString();
+            button_Building_Name[i].text = the_BB.building_Prefab[i].name.ToString();//UI name
         }
     }
     void OnMouseDown()

@@ -606,7 +606,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   total_Food: 0
   total_Water: 0
-  total_Material: 50
+  total_Material: 0
   total_Moral: 0
   total_Defense: 0
   limit_Food: 0
@@ -618,6 +618,7 @@ MonoBehaviour:
   workshop_List: []
   building_Reconstructing_List: []
   building_Level_Up_List: []
+  building_Retraining_List: []
   total_Lab: 0
   lab_Researching: 0
   lab_Currently_Researching: 0
@@ -902,6 +903,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Reservoir(Manager) (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 96514656678129983, guid: 833661b727a89534ca3dba7f6e7c4edf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1693354237460329776, guid: 833661b727a89534ca3dba7f6e7c4edf,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -962,6 +968,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7708458577476135438, guid: 833661b727a89534ca3dba7f6e7c4edf,
+        type: 3}
+      propertyPath: work_Needed
+      value: 15
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 833661b727a89534ca3dba7f6e7c4edf, type: 3}
 --- !u!1 &1150708436
@@ -1000,6 +1011,8 @@ MonoBehaviour:
   cost_Of_Upgrade: 
   current_Building_Level: 1
   amount_Produce: 0
+  work_Needed: 0
+  current_Workers_Assign: []
 --- !u!212 &1150708438
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1167,6 +1180,8 @@ MonoBehaviour:
   cost_Of_Upgrade: 
   current_Building_Level: 1
   amount_Produce: 0
+  work_Needed: 0
+  current_Workers_Assign: []
 --- !u!61 &1297756737
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1353,6 +1368,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4911819156916544335, guid: b8ce3d9101a6b1746aac463f742da9c8,
+        type: 3}
+      propertyPath: work_Needed
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 7437306670866226468, guid: b8ce3d9101a6b1746aac463f742da9c8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1775,6 +1795,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1560835301060212247, guid: f94c3bec8e67ab2469fe214e6f851ed5,
+        type: 3}
+      propertyPath: work_Needed
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 6226236376691867417, guid: f94c3bec8e67ab2469fe214e6f851ed5,
         type: 3}
       propertyPath: m_Name
@@ -2106,6 +2131,8 @@ MonoBehaviour:
   cost_Of_Upgrade: 
   current_Building_Level: 1
   amount_Produce: 0
+  work_Needed: 0
+  current_Workers_Assign: []
 --- !u!212 &1934283088
 SpriteRenderer:
   m_ObjectHideFlags: 0
