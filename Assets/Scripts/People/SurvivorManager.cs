@@ -15,13 +15,15 @@ public class SurvivorManager : MonoBehaviour
     /// </summary>
 
     [Header("StartingSurvivor")]
+    public int survivor_Total;
     public List<int> starting_Amount;
+    public List<GameObject> survivor_List;
     [Header("SurvivorStats")]
     public List<SurvivorStats> occupation_List;
     public List<string> R_name_First;
     public List<string> R_name_Second;
 
-    private void Start()
+    private void Awake()
     {
         ////start with 15
         for (int j = 0; j <= 5; j++)
@@ -31,6 +33,8 @@ public class SurvivorManager : MonoBehaviour
                 GameObject NS = Instantiate(survivor_Blank, transform.position, transform.rotation);
                 NS.GetComponent<Survivor>().survivor_Current_Stats = occupation_List[j];
                 NS.transform.parent = this.gameObject.transform;
+                survivor_Total++;
+                survivor_List.Add(NS);
             }
         }
     }

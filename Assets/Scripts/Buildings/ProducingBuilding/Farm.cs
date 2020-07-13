@@ -25,7 +25,6 @@ public class Farm : BC_ResourceProducing
             }
             work_Left -= current_Total_ManPower;//minus off work
             print(work_Left);
-
         }
         //produce and reset work needed
         if (work_Left <= 0)

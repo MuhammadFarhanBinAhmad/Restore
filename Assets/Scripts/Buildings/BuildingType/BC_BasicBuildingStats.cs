@@ -12,15 +12,18 @@ public class BC_BasicBuildingStats : MonoBehaviour
     //Building UI
     [Header("Building UI")]
     public GameObject the_Building_UI;
+    public SurvivorList the_Survivor_List;
     public List<TextMeshProUGUI> button_Building_Name;//list of possible build to reconstruct to
     //Building Stats
     [Header("Building Stats")]
     public List<int> cost_Of_Upgrade = new List<int>();
     public int current_Building_Level = 1;
+    public List<Survivor> survivor_Assigned;
 
     private void Awake()
     {
         the_CM = FindObjectOfType<ColonyManager>();
+        the_Survivor_List = FindObjectOfType<SurvivorList>();
     }
     internal void Start()
     {
@@ -51,5 +54,10 @@ public class BC_BasicBuildingStats : MonoBehaviour
             the_CM.total_Material -= cost_Of_Upgrade[current_Building_Level];
             current_Building_Level++;
         }
+    }
+    public void OpenSurvivorList()
+    {
+        the_Survivor_List.gameObject.SetActive(true);
+        the_Survivor_List.GetComponent<SurvivorList>().building_Currently_Selected = this;
     }
 }
